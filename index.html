@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalkulator HPP UMKM Mandiri | Ponorogo</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="10" fill="#E8763A"/>
+            <path d="M8 26 L18 10 L28 26" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 20 H24" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="18" cy="10" r="2" fill="white"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">HPP UMKM</span>
+          <span class="logo-sub">Kalkulator Mandiri · Ponorogo</span>
+        </div>
+      </div>
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        Real-time
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- ===== HERO STRIP ===== -->
+    <section class="hero-strip">
+      <h1>Hitung HPP Usahamu<br><span class="accent-text">dengan Tepat & Mudah</span></h1>
+      <p>Masukkan biaya produksimu dan dapatkan rekomendasi harga jual yang menguntungkan — cocok untuk UMKM Ponorogo.</p>
+    </section>
+
+    <!-- ===== PRESET DROPDOWN ===== -->
+    <section class="card preset-card">
+      <div class="card-label">
+        <span class="label-icon">⚡</span>
+        Mulai Cepat dengan Contoh UMKM
+      </div>
+      <div class="select-wrapper">
+        <select id="presetSelect">
+          <option value="">— Pilih Contoh Usaha atau Isi Manual —</option>
+          <option value="sate">🥩 Warung Sate Ponorogo</option>
+          <option value="reog">🎭 Kerajinan Reog</option>
+          <option value="cafe">☕ Cafe Jajan</option>
+        </select>
+        <span class="select-arrow">▾</span>
+      </div>
+      <div id="presetBadge" class="preset-badge hidden"></div>
+    </section>
+
+    <!-- ===== INPUT FORM ===== -->
+    <section class="card input-card">
+      <div class="card-label">
+        <span class="label-icon">📝</span>
+        Data Biaya Produksi
+      </div>
+
+      <div class="input-group">
+        <label for="bahanBaku">
+          <span class="input-icon">🌾</span>
+          Biaya Bahan Baku Langsung
+          <span class="input-hint">Material utama yang digunakan</span>
+        </label>
+        <div class="rupiah-wrap">
+          <span class="rp-prefix">Rp</span>
+          <input type="number" id="bahanBaku" placeholder="0" min="0" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="tenagaKerja">
+          <span class="input-icon">👷</span>
+          Biaya Tenaga Kerja
+          <span class="input-hint">Upah karyawan atau jasa pembuatan</span>
+        </label>
+        <div class="rupiah-wrap">
+          <span class="rp-prefix">Rp</span>
+          <input type="number" id="tenagaKerja" placeholder="0" min="0" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="overhead">
+          <span class="input-icon">🔧</span>
+          Biaya Overhead / Lain-lain
+          <span class="input-hint">Listrik, sewa tempat, kemasan, dll.</span>
+        </label>
+        <div class="rupiah-wrap">
+          <span class="rp-prefix">Rp</span>
+          <input type="number" id="overhead" placeholder="0" min="0" />
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="input-group">
+        <label for="jumlahProduksi">
+          <span class="input-icon">📦</span>
+          Target Jumlah Produksi
+          <span class="input-hint">Total unit atau porsi yang diproduksi</span>
+        </label>
+        <div class="unit-wrap">
+          <input type="number" id="jumlahProduksi" placeholder="1" min="1" value="1" />
+          <span class="unit-suffix">Unit</span>
+        </div>
+      </div>
+
+      <!-- Margin Slider -->
+      <div class="input-group slider-group">
+        <label for="marginSlider">
+          <span class="input-icon">📈</span>
+          Target Margin Keuntungan
+          <span class="input-hint">Geser slider untuk mengatur margin</span>
+        </label>
+        <div class="slider-control">
+          <div class="slider-track-wrap">
+            <input type="range" id="marginSlider" min="0" max="200" value="30" step="1" />
+          </div>
+          <div class="slider-display">
+            <input type="number" id="marginInput" value="30" min="0" max="200" />
+            <span class="pct-suffix">%</span>
+          </div>
+        </div>
+        <div class="margin-labels">
+          <span>0%</span>
+          <span>50%</span>
+          <span>100%</span>
+          <span>200%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DASHBOARD HASIL ===== -->
+    <section class="card result-card">
+      <div class="card-label">
+        <span class="label-icon">📊</span>
+        Dashboard Hasil Perhitungan
+      </div>
+
+      <div class="result-grid">
+        <div class="result-tile tile-total">
+          <div class="tile-icon">🧮</div>
+          <div class="tile-label">Total Biaya Produksi</div>
+          <div class="tile-value" id="totalBiaya">Rp 0</div>
+          <div class="tile-sub" id="totalPerUnit">— per unit</div>
+        </div>
+        <div class="result-tile tile-hpp">
+          <div class="tile-icon">🏷️</div>
+          <div class="tile-label">HPP per Unit</div>
+          <div class="tile-value" id="hppPerUnit">Rp 0</div>
+          <div class="tile-sub">Harga Pokok Penjualan</div>
+        </div>
+        <div class="result-tile tile-jual tile-full">
+          <div class="tile-icon">💰</div>
+          <div class="tile-label">Rekomendasi Harga Jual</div>
+          <div class="tile-value highlight" id="hargaJual">Rp 0</div>
+          <div class="tile-sub" id="keuntunganPerUnit">Keuntungan: Rp 0 per unit</div>
+        </div>
+      </div>
+
+      <!-- Margin Explorer Panel -->
+      <div class="margin-explorer" id="marginExplorer">
+        <div class="explorer-title">🔍 Margin Explorer</div>
+        <div class="explorer-grid">
+          <div class="explorer-item">
+            <span class="ex-label">Margin Dipilih</span>
+            <span class="ex-val" id="exMargin">30%</span>
+          </div>
+          <div class="explorer-item">
+            <span class="ex-label">Keuntungan / Unit</span>
+            <span class="ex-val" id="exProfit">Rp 0</span>
+          </div>
+          <div class="explorer-item">
+            <span class="ex-label">Total Keuntungan</span>
+            <span class="ex-val" id="exTotalProfit">Rp 0</span>
+          </div>
+          <div class="explorer-item">
+            <span class="ex-label">Total Pendapatan</span>
+            <span class="ex-val" id="exRevenue">Rp 0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PIE CHART ===== -->
+    <section class="card chart-card">
+      <div class="card-label">
+        <span class="label-icon">🥧</span>
+        Komposisi Biaya Produksi
+      </div>
+      <div class="chart-layout">
+        <div class="canvas-wrap">
+          <canvas id="pieChart" width="220" height="220"></canvas>
+          <div class="chart-center-label" id="chartCenterLabel">
+            <span class="center-pct" id="centerPct">—</span>
+            <span class="center-desc">dominan</span>
+          </div>
+        </div>
+        <div class="legend-panel">
+          <div class="legend-item" id="legBahan">
+            <span class="legend-dot" style="background:#E8763A"></span>
+            <div class="legend-info">
+              <span class="legend-name">Bahan Baku</span>
+              <span class="legend-pct" id="pctBahan">0%</span>
+              <span class="legend-amt" id="amtBahan">Rp 0</span>
+            </div>
+          </div>
+          <div class="legend-item" id="legTK">
+            <span class="legend-dot" style="background:#4A8C8A"></span>
+            <div class="legend-info">
+              <span class="legend-name">Tenaga Kerja</span>
+              <span class="legend-pct" id="pctTK">0%</span>
+              <span class="legend-amt" id="amtTK">Rp 0</span>
+            </div>
+          </div>
+          <div class="legend-item" id="legOH">
+            <span class="legend-dot" style="background:#2C4F4E"></span>
+            <div class="legend-info">
+              <span class="legend-name">Overhead</span>
+              <span class="legend-pct" id="pctOH">0%</span>
+              <span class="legend-amt" id="amtOH">Rp 0</span>
+            </div>
+          </div>
+          <div class="legend-tip" id="legendTip">
+            Masukkan data biaya untuk melihat komposisi biaya produksimu.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TIPS UMKM ===== -->
+    <section class="card tips-card">
+      <div class="card-label">
+        <span class="label-icon">💡</span>
+        Tips Cerdas untuk UMKM
+      </div>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <span class="tip-num">01</span>
+          <p>Catat semua biaya dengan teliti, termasuk yang kecil seperti plastik kemasan atau ongkos kirim bahan.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">02</span>
+          <p>Margin 20–40% adalah rentang umum untuk UMKM kuliner. Sesuaikan dengan kondisi pasar lokal Ponorogo.</p>
+        </div>
+        <div class="tip-item">
+          <span class="tip-num">03</span>
+          <p>Hitung HPP secara berkala — minimal setiap bulan — karena harga bahan baku bisa berubah sewaktu-waktu.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <p>© 2025 Kalkulator HPP UMKM Mandiri · Dibuat oleh Siswa Smkn 1 Jenangan untuk pelaku usaha Ponorogo</p>
+      <p class="footer-sub">Inspired by SMK Negeri 1 Jenangan Ponorogo</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
